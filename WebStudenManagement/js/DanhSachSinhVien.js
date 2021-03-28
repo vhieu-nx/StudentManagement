@@ -22,10 +22,10 @@ function DanhSachSinhVien (){
 	// 	}
 	// }
 	this.TimSV = function(NameOrMSSV){		
-		var svTim = [];
-		for (i = 0 ; i < this.DSSV.length ; i++){
-			var ds1 = this.DSSV[i].MSSV;
-			var ds2 = this.DSSV[i].HoTen;
+		let svTim = [];
+		for (let i = 0 ; i < this.DSSV.length ; i++){
+			let ds1 = this.DSSV[i].MSSV;
+			let ds2 = this.DSSV[i].HoTen;
 			if(NameOrMSSV == ds1){
 				svTim.push(this.DSSV[i]);
 			}

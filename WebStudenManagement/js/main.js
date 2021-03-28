@@ -1,6 +1,6 @@
 window.onload=function(){
-  var fieldInput = document.getElementsByClassName('field-input');
-  for (var i = 0; i < fieldInput.length; i++) {
+  let fieldInput = document.getElementsByClassName('field-input');
+  for (let i = 0; i < fieldInput.length; i++) {
     fieldInput[i].addEventListener('focus', function() {
         this.parentNode.classList.add('isFocused', 'hasLabel');
     }, false);
