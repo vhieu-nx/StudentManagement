@@ -96,7 +96,7 @@ function CapNhatDSSinhVien2()
 {
 	let lstBoxSinhVien2 = document.getElementById('lstDanhSachSinhVien2');
 	//Clear tat ca option tren giao dien
-	lstBoxSinhVien2.innerHTML = '';
+	 lstBoxSinhVien2.innerHTML = '';
 	for(let i=0;i<dsSinhVien.DSSV.length;i++)
 	{
 		let optionSV = document.createElement('option');
@@ -489,21 +489,21 @@ function KiemTraSoDT()
 	let thongbao = document.getElementById("thongbaoSDT");
 	if(kiemTraRong(sdt))
 	{
-		thongbao.innerHTML = "Số dt không được để trống";
+		thongbao.innerHTML = "Số điện thoại không được để trống";
 		thongbao.classList.add('animated','fadeInRight')
 		thongbao.style.display = "block";
 		kq = false;		
 	}
 	else if(kiemTraSo(sdt))
 	{
-		thongbao.innerHTML = "Số dt phải là số";
+		thongbao.innerHTML = "Số điện thoại phải là số";
 		thongbao.classList.add('animated','fadeInRight')
 		thongbao.style.display = "block";
 		kq = false;		
 	}
 	else if(kiemTraSoLuongKyTu(sdt,10,18)==false)
 	{
-		thongbao.innerHTML = "Số dt phải từ 10 ký tự trở lên";
+		thongbao.innerHTML = "Số điện thoại phải từ 10 ký tự trở lên";
 		thongbao.classList.add('animated','fadeInRight')
 		thongbao.style.display = "block";
 		kq = false;		
