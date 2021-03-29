@@ -1,9 +1,4 @@
-/*-------Xử lý------*/
 
-// Author: ....
-// ---------------------------------------------
-// Requirements: 
-// ---------------------------------------------
 // Gồm :
 // Phương thức : ThemSinhVien , ThemDiem
 // Các hàm kiểm tra nhập vào thông tin và điểm SV

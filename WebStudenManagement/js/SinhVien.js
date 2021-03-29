@@ -1,7 +1,4 @@
-/*-------Prototype SinhVien------*/
-// ---------------------------------------------
-// Requirements: 
-// ---------------------------------------------
+
 // Gồm : HoTen , Email , CMND , SDT
 function SinhVien(HoTen,Email,CMND,SDT){ 
 	this.HoTen = HoTen;

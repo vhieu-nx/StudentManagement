@@ -1,9 +1,4 @@
-/*-------Prototype DanhSachSinhVien------*/
-// Date: 24 Sept 2017
-// Author: ....
-// ---------------------------------------------
-// Requirements: 
-// ---------------------------------------------
+
 // Gồm :
 // Mảng DSSV và phương thức themSV , TimSV
 function DanhSachSinhVien (){
