@@ -58,6 +58,7 @@ function check() {
 	// check if stored data from register-form is equal to data from login form
 	if(userName.value == storedName && userPw.value == storedPw) {
 		document.getElementById('shownameid').innerText = localStorage.getItem('name');
+
 		alert('Login success.');
 	}else {
 		alert('Goo to  fix bug.');
