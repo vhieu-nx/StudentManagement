@@ -227,7 +227,7 @@ function XuatDSSV(dssvDaChon,id_Tablesv)
 	lstDanhSachXLSV.innerHTML = "";
 	table.classList.add("table","table-striped","table-hover");
 	lstDanhSachXLSV.appendChild(table);
-	getLocalStorage();
+
 	//Tạo ô đầu trong table
 	let tr = document.createElement("tr");
 	for(let i=0 ; i< headTable.length ;i++ ){
@@ -278,7 +278,7 @@ function showDSSV()
             return 1;
         return 0;
     };
-    dsSinhVien.DSSV.sort(compare);	
+    dsSinhVien.DSSV.sort(compare);
 	XuatDSSV(dsSinhVien.DSSV,"lstDanhSachXepLoaiSV1");
 }
 
@@ -296,6 +296,7 @@ function Top1(){
 	// 	}
 	// 	var top1 = [];
 	// 	top1.push(dsSinhVien.DSSV[idx]);
+
 	function compare(sv1,sv2) {
 			if (sv1.DTB > sv2.DTB )
 			return -1;
@@ -659,8 +660,12 @@ function rsThemDiem(){
 	document.getElementById("thongbaoLy").innerHTML = "";
 	document.getElementById("thongbaoHoa").innerHTML = "";
 }
+
 function setLocalStorage(){
-	localStorage.setItem("XuatDSSV", XuatDSSV);
+	localStorage.setItem("XuatDSSV", JSON.stringify(dsSinhVien));
+	let jsonString = JSON.parse(JSON.stringify(dsSinhVien)) ;
+	localStorage.setItem('XuatDiemSV',JSON.stringify())
+
 }
 function getLocalStorage(){
 	XuatDSSV = localStorage.getItem("XuatDSSV");
