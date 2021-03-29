@@ -1,4 +1,3 @@
-
 // Gồm :
 // Phương thức : ThemSinhVien , ThemDiem
 // Các hàm kiểm tra nhập vào thông tin và điểm SV
@@ -227,7 +226,8 @@ function XuatDSSV(dssvDaChon,id_Tablesv)
 	let table = document.createElement("table");
 	lstDanhSachXLSV.innerHTML = "";
 	table.classList.add("table","table-striped","table-hover");
-	lstDanhSachXLSV.appendChild(table);	
+	lstDanhSachXLSV.appendChild(table);
+	getLocalStorage();
 	//Tạo ô đầu trong table
 	let tr = document.createElement("tr");
 	for(let i=0 ; i< headTable.length ;i++ ){
@@ -658,4 +658,10 @@ function rsThemDiem(){
 	document.getElementById("thongbaoToan").innerHTML = "";
 	document.getElementById("thongbaoLy").innerHTML = "";
 	document.getElementById("thongbaoHoa").innerHTML = "";
+}
+function setLocalStorage(){
+	localStorage.setItem("XuatDSSV", XuatDSSV);
+}
+function getLocalStorage(){
+	XuatDSSV = localStorage.getItem("XuatDSSV");
 }
