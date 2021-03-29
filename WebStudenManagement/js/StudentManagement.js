@@ -62,7 +62,6 @@ function ThemSinhVien(){
 		thongbao.style.cssText = "color:green;font-weight:bold";
 		thongbao.classList.add('animated','fadeInRight');
 		dsSinhVien.themSV(sv);
-		setLocalStorage()
 		CapNhatDSSinhVien1();
 		CapNhatDSSinhVien2();	
 	}
@@ -73,7 +72,6 @@ function ThemSinhVien(){
 //Buoc 4: Xay dung ham capnhatDSsinhvien
 function CapNhatDSSinhVien1()
 {
-	getLocalStorage()
 	let lstBoxSinhVien1 = document.getElementById('lstDanhSachSinhVien1');
 	//Clear tat ca option tren giao dien
 	lstBoxSinhVien1.innerHTML = '';
@@ -90,7 +88,6 @@ function CapNhatDSSinhVien1()
 
 function CapNhatDSSinhVien2()
 {
-	getLocalStorage()
 	let lstBoxSinhVien2 = document.getElementById('lstDanhSachSinhVien2');
 	//Clear tat ca option tren giao dien
 	 lstBoxSinhVien2.innerHTML = '';
@@ -101,7 +98,6 @@ function CapNhatDSSinhVien2()
 		let svTam = dsSinhVien.DSSV[i];
 		optionSV.value = svTam.MSSV;
 		optionSV.innerHTML = svTam.HoTen;
-
 		lstBoxSinhVien2.appendChild(optionSV);
 	}
 }
@@ -146,7 +142,6 @@ function XoaSinhVien()
 		}
 	}
 	dsSinhVien.XoaDSSinhVien(dsSinhVienDuocChon);
-	setLocalStorage()
 	CapNhatDSSinhVien1();
 	CapNhatDSSinhVien2();
 }
@@ -163,7 +158,6 @@ function ThemDiem()
 	let svDaChon = document.getElementById("lstDanhSachSinhVien2").selectedIndex;
 	if(dsSinhVien.DSSV[svDaChon] == undefined){
 		thongbaodiem.innerHTML = "Vui lòng nhập chọn Sinh Viên để nhập điểm";
-		setLocalStorage()
 		thongbaodiem.classList.add('animated','fadeInRight');
 	}
 	else if(KiemTraDiem(toan,ly,hoa) == false)
@@ -195,7 +189,6 @@ function ThemDiem()
 				dsSinhVien.DSSV[i].DTB = dtb;
 				thongbaodiem.innerHTML = "Thêm thành công";
 				thongbaodiem.style.cssText = "color:green;font-weight:bold";
-				setLocalStorage()
 				thongbaodiem.classList.add('animated','fadeInRight');
 			}
 		}
@@ -279,7 +272,6 @@ function XuatDSSV(dssvDaChon,id_Tablesv)
 //Bảng danh sách sinh viên
 function showDSSV()
 {
-	getLocalStorage()
     function compare(sv1,sv2) {
         if (sv1.MSSV < sv2.MSSV )
             return -1;
@@ -293,7 +285,6 @@ function showDSSV()
 
 //Tìm top 1 và top 10 sinh viên điểm cao nhất
 function Top1(){
-	getLocalStorage()
 	// if(dsSinhVien.DSSV.length>0){
 	// 	var idx = 0;
 	// 	var max = dsSinhVien.DSSV[0].DTB;	
@@ -319,7 +310,6 @@ function Top1(){
 }
 
 function Top10(){
-	getLocalStorage()
 	function compare(sv1,sv2) {
 	  if (sv1.DTB < sv2.DTB )
 	    return 1;
@@ -345,15 +335,12 @@ function Timsv(){
 		divTableTimSV.classList.remove('animated','fadeInRight');
 		thongbaoTimSV.innerHTML = "Không tìm thấy Sinh Viên";
 		thongbaoTimSV.classList.add('animated','fadeInRight');
-		setLocalStorage();
 		thongbaoTimSV.style.display = "block";
 	}
 	else{
 		thongbaoTimSV.innerHTML="";
 		thongbaoTimSV.classList.remove('animated','fadeInRight');
-
 		XuatDSSV(kqSV,"lstDanhSachXepLoaiSV4");
-		setLocalStorage();
 		divTableTimSV.classList.add('animated','fadeInRight');
 	}
 }
@@ -375,7 +362,6 @@ function KiemTraSV()
 		thongbao.innerHTML = "Không được để trống các ô nhập vào";
 		thongbao.style.display = "block";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		kq = false;
 	}
 	return kq;
@@ -392,7 +378,6 @@ function KiemTraMaSV()
 		thongbao.innerHTML = "Mã SV không được để trống";
 		thongbao.style.display = "block";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		kq = false;
 	}
 	else{
@@ -401,7 +386,6 @@ function KiemTraMaSV()
 			if(masv == dsSinhVien.DSSV[i].MSSV){
 				thongbao.innerHTML = "Mã số sinh viên đã tồn tại,vui lòng nhập lại";
 				thongbao.classList.add('animated','fadeInRight')
-				setLocalStorage();
 				thongbao.style.display = "block";
 				kq = false;
 			}
@@ -420,7 +404,6 @@ function KiemTraHoTen()
 		thongbao.innerHTML = "Họ Tên không được để trống";
 		thongbao.style.display = "block";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		kq = false;
 	}
 	if(kiemTraChu(hoten))
@@ -428,7 +411,6 @@ function KiemTraHoTen()
 		thongbao.innerHTML = "Họ và tên phải là chữ";
 		thongbao.style.display = "block";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		kq = false;
 	}
 	else{
@@ -437,7 +419,6 @@ function KiemTraHoTen()
 			if(hoten == dsSinhVien.DSSV[i].HoTen){
 				thongbao.innerHTML = "Họ và tên sinh viên đã tồn tại,vui lòng nhập lại";
 				thongbao.classList.add('animated','fadeInRight')
-				setLocalStorage();
 				thongbao.style.display = "block";
 				kq = false;
 			}
@@ -455,7 +436,6 @@ function KiemTraCMND()
 	{
 		thongbao.innerHTML = "Số CMND không được để trống";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;
 	}
@@ -463,7 +443,6 @@ function KiemTraCMND()
 	{
 		thongbao.innerHTML = "CMND phải là số";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;
 	}
@@ -471,7 +450,6 @@ function KiemTraCMND()
 	{
 		thongbao.innerHTML = "CMND phải từ 9 đến 12 ký tự";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;
 	}
@@ -488,7 +466,6 @@ function KiemTraEmail()
 	{
 		thongbao.innerHTML = "Email không được để trống";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;
 	}
@@ -496,7 +473,6 @@ function KiemTraEmail()
 	{
 		thongbao.innerHTML = "Email nhập không hợp lệ";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;
 	}
@@ -512,7 +488,6 @@ function KiemTraSoDT()
 	{
 		thongbao.innerHTML = "Số điện thoại không được để trống";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;		
 	}
@@ -520,7 +495,6 @@ function KiemTraSoDT()
 	{
 		thongbao.innerHTML = "Số điện thoại phải là số";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;		
 	}
@@ -528,7 +502,6 @@ function KiemTraSoDT()
 	{
 		thongbao.innerHTML = "Số điện thoại phải từ 10 ký tự trở lên";
 		thongbao.classList.add('animated','fadeInRight')
-		setLocalStorage();
 		thongbao.style.display = "block";
 		kq = false;		
 	}
@@ -544,7 +517,6 @@ function KiemTraDiem(so1,so2,so3)
 	{
 		thongbaodiem.innerHTML = "Mời bạn nhập vào điểm là số";
 		thongbaodiem.classList.add('animated','fadeInRight');
-		setLocalStorage();
 		thongbaodiem.style.display = "block";
 		kq = false;
 	}	
@@ -577,14 +549,12 @@ function KiemTraToan(){
 		{
 			thongbaoToan.innerHTML = "Mời bạn nhập điểm Toán là số";
 			thongbaoToan.classList.add('animated','fadeInRight');
-			setLocalStorage();
 			thongbaoToan.style.display = "block";
 			kq = false;
 		}
 	if(parseFloat(toan)>10 || parseFloat(toan)<0){
 		thongbaoToan.innerHTML = "Vui lòng nhập Điểm Toán từ 0-10 điểm";
 		thongbaoToan.classList.add('animated','fadeInRight');
-		setLocalStorage();
 		thongbaoToan.style.display = "block";
 		kq = false;			
 	}
@@ -592,7 +562,6 @@ function KiemTraToan(){
 }
 
 function KiemTraLy(){
-	setLocalStorage();
 	let kq = true;
 	let thongbaoLy = document.getElementById("thongbaoLy");
 	let ly = document.getElementById('ly').value;
@@ -600,14 +569,12 @@ function KiemTraLy(){
 		{
 			thongbaoLy.innerHTML = "Mời bạn nhập điểm Lý là số";
 			thongbaoLy.classList.add('animated','fadeInRight');
-			setLocalStorage();
 			thongbaoLy.style.display = "block";
 			kq = false;
 		}
 	if(parseFloat(ly)>10 || parseFloat(ly)<0){
 		thongbaoLy.innerHTML = "Vui lòng nhập Điểm Lý từ 0-10 điểm";
 		thongbaoLy.classList.add('animated','fadeInRight');
-		setLocalStorage();
 		thongbaoLy.style.display = "block";
 		kq = false;			
 	}
@@ -615,7 +582,6 @@ function KiemTraLy(){
 }
 
 function KiemTraHoa(){
-
 	let kq = true;
 	let thongbaoHoa = document.getElementById("thongbaoHoa");
 	let hoa = document.getElementById('hoa').value;
@@ -623,14 +589,12 @@ function KiemTraHoa(){
 		{
 			thongbaoHoa.innerHTML = "Mời bạn nhập điểm Hóa là số";
 			thongbaoHoa.classList.add('animated','fadeInRight');
-			setLocalStorage();
 			thongbaoHoa.style.display = "block";
 			kq = false;
 		}
 	if(parseFloat(hoa)>10 || parseFloat(hoa)<0){
 		thongbaoHoa.innerHTML = "Vui lòng nhập Điểm Hóa từ 0-10 điểm";
 		thongbaoHoa.classList.add('animated','fadeInRight');
-		setLocalStorage();
 		thongbaoHoa.style.display = "block";
 		kq = false;			
 	}
