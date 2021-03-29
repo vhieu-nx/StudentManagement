@@ -661,12 +661,14 @@ function rsThemDiem(){
 	document.getElementById("thongbaoHoa").innerHTML = "";
 }
 
-function setLocalStorage(){
+// function setLocalStorage(){
+// 	localStorage.setItem("XuatDSSV", JSON.stringify(dsSinhVien));
+// 	let jsonString = JSON.parse(JSON.stringify(dsSinhVien)) ;
+// 	localStorage.setItem('XuatDiemSV',JSON.stringify())
+//
+// }
+// function getLocalStorage(){
+// 	XuatDSSV = localStorage.getItem("XuatDSSV");
+// }
 	localStorage.setItem("XuatDSSV", JSON.stringify(dsSinhVien));
 	let jsonString = JSON.parse(JSON.stringify(dsSinhVien)) ;
-	localStorage.setItem('XuatDiemSV',JSON.stringify())
-
-}
-function getLocalStorage(){
-	XuatDSSV = localStorage.getItem("XuatDSSV");
-}
