@@ -62,6 +62,7 @@ function ThemSinhVien(){
 		thongbao.style.cssText = "color:green;font-weight:bold";
 		thongbao.classList.add('animated','fadeInRight');
 		dsSinhVien.themSV(sv);
+		setLocalStorage();
 		CapNhatDSSinhVien1();
 		CapNhatDSSinhVien2();	
 	}
@@ -82,13 +83,16 @@ function CapNhatDSSinhVien1()
 		let svTam = dsSinhVien.DSSV[i];
 		optionSV.value = svTam.MSSV;
 		optionSV.innerHTML = svTam.HoTen;
+
 		lstBoxSinhVien1.appendChild(optionSV);
 	}
 }
 
 function CapNhatDSSinhVien2()
 {
+
 	let lstBoxSinhVien2 = document.getElementById('lstDanhSachSinhVien2');
+	setLocalStorage();
 	//Clear tat ca option tren giao dien
 	 lstBoxSinhVien2.innerHTML = '';
 	for(let i=0;i<dsSinhVien.DSSV.length;i++)
@@ -98,6 +102,7 @@ function CapNhatDSSinhVien2()
 		let svTam = dsSinhVien.DSSV[i];
 		optionSV.value = svTam.MSSV;
 		optionSV.innerHTML = svTam.HoTen;
+		setLocalStorage();
 		lstBoxSinhVien2.appendChild(optionSV);
 	}
 }
@@ -138,10 +143,11 @@ function XoaSinhVien()
 		if(lstSinhVienDuocChon[i].selected)
 		{
 			let masvDuocChon = lstSinhVienDuocChon[i].value;
+
 			dsSinhVienDuocChon.push(masvDuocChon);
 		}
 	}
-	dsSinhVien.XoaDSSinhVien(dsSinhVienDuocChon);
+	dsSinhVien.XoaDSSinhVien(dsSinhVienDuocChon);setLocalStorage();
 	CapNhatDSSinhVien1();
 	CapNhatDSSinhVien2();
 }
@@ -158,6 +164,7 @@ function ThemDiem()
 	let svDaChon = document.getElementById("lstDanhSachSinhVien2").selectedIndex;
 	if(dsSinhVien.DSSV[svDaChon] == undefined){
 		thongbaodiem.innerHTML = "Vui lòng nhập chọn Sinh Viên để nhập điểm";
+		setLocalStorage();
 		thongbaodiem.classList.add('animated','fadeInRight');
 	}
 	else if(KiemTraDiem(toan,ly,hoa) == false)
@@ -189,6 +196,7 @@ function ThemDiem()
 				dsSinhVien.DSSV[i].DTB = dtb;
 				thongbaodiem.innerHTML = "Thêm thành công";
 				thongbaodiem.style.cssText = "color:green;font-weight:bold";
+				setLocalStorage();
 				thongbaodiem.classList.add('animated','fadeInRight');
 			}
 		}
@@ -221,12 +229,14 @@ function ThemDiem()
 //Xuất ra bảng danh sách sinh viên
 function XuatDSSV(dssvDaChon,id_Tablesv)
 {
-	getLocalStorage();
+
+setLocalStorage();
 	let headTable = ["Tên","MSSV","ĐTB","Xếp loại"];
 	let lstDanhSachXLSV = document.getElementById(id_Tablesv);
 	let table = document.createElement("table");
 	lstDanhSachXLSV.innerHTML = "";
 	table.classList.add("table","table-striped","table-hover");
+	setLocalStorage();
 	lstDanhSachXLSV.appendChild(table);
 
 	//Tạo ô đầu trong table
@@ -260,6 +270,7 @@ function XuatDSSV(dssvDaChon,id_Tablesv)
 			{
 				TD.innerHTML = dssvDaChon[i].XepLoai;
 			}
+			setLocalStorage();
 			TR.appendChild(TD);
 			table.appendChild(TR);		
 		}
@@ -280,11 +291,13 @@ function showDSSV()
         return 0;
     };
     dsSinhVien.DSSV.sort(compare);
+    setLocalStorage();
 	XuatDSSV(dsSinhVien.DSSV,"lstDanhSachXepLoaiSV1");
 }
 
 //Tìm top 1 và top 10 sinh viên điểm cao nhất
 function Top1(){
+
 	// if(dsSinhVien.DSSV.length>0){
 	// 	var idx = 0;
 	// 	var max = dsSinhVien.DSSV[0].DTB;	
@@ -306,6 +319,7 @@ function Top1(){
 			return 0;
 		};
 	let top1 = dsSinhVien.DSSV.sort(compare).slice(0, 1);
+
 		XuatDSSV(top1,"lstDanhSachXepLoaiSV2");
 }
 
@@ -318,6 +332,7 @@ function Top10(){
 	  return 0;
 	};
 	let top10 = dsSinhVien.DSSV.sort(compare).slice(0, 10);
+
 	XuatDSSV(top10,"lstDanhSachXepLoaiSV3");
 }
 
@@ -505,6 +520,7 @@ function KiemTraSoDT()
 		thongbao.style.display = "block";
 		kq = false;		
 	}
+	setLocalStorage();
 	return kq;
 }
 
@@ -516,7 +532,9 @@ function KiemTraDiem(so1,so2,so3)
 	if(isNaN(so1) && isNaN(so2) && isNaN(so3) || isNaN(parseFloat(so1))&&isNaN(parseFloat(so2))&&isNaN(parseFloat(so3)))
 	{
 		thongbaodiem.innerHTML = "Mời bạn nhập vào điểm là số";
+
 		thongbaodiem.classList.add('animated','fadeInRight');
+		setLocalStorage();
 		thongbaodiem.style.display = "block";
 		kq = false;
 	}	
@@ -537,7 +555,8 @@ function KiemTraDiem(so1,so2,so3)
 	// 	thongbaodiem.innerHTML = "Mời bạn nhập điểm Hóa là số";
 	// 	thongbaodiem.style.display = "block";
 	// 	kq = false;
-	// }			
+	// }
+	setLocalStorage();
 	return kq;
 }
 
@@ -558,6 +577,7 @@ function KiemTraToan(){
 		thongbaoToan.style.display = "block";
 		kq = false;			
 	}
+	setLocalStorage();
 	return kq;			
 }
 
@@ -588,12 +608,14 @@ function KiemTraHoa(){
 	if(isNaN(hoa) || isNaN(parseFloat(hoa)))
 		{
 			thongbaoHoa.innerHTML = "Mời bạn nhập điểm Hóa là số";
+			setLocalStorage();
 			thongbaoHoa.classList.add('animated','fadeInRight');
 			thongbaoHoa.style.display = "block";
 			kq = false;
 		}
 	if(parseFloat(hoa)>10 || parseFloat(hoa)<0){
 		thongbaoHoa.innerHTML = "Vui lòng nhập Điểm Hóa từ 0-10 điểm";
+		setLocalStorage();
 		thongbaoHoa.classList.add('animated','fadeInRight');
 		thongbaoHoa.style.display = "block";
 		kq = false;			
@@ -674,7 +696,7 @@ function rsThemDiem(){
 function setLocalStorage(){
 	localStorage.setItem("XuatDSSV", JSON.stringify(dsSinhVien));
 	let jsonString = JSON.parse(JSON.stringify(dsSinhVien)) ;
-	console.log(jsonString);
+	return jsonString;
 }
 function getLocalStorage(){
 	dsSinhVien = localStorage.getItem("XuatDSSV");

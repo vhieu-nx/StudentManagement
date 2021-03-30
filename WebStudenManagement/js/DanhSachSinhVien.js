@@ -4,6 +4,7 @@
 function DanhSachSinhVien (){
 	this.DSSV = [];
 	this.themSV = function(SinhVienThem){
+
 		this.DSSV.push(SinhVienThem);
 	};
 	// this.XoaSinhVien = function(dsSinhVienDuocChon)
@@ -57,9 +58,10 @@ function check() {
 
 	// check if stored data from register-form is equal to data from login form
 	if(userName.value == storedName && userPw.value == storedPw) {
-		document.getElementById('shownameid').innerText = localStorage.getItem('name');
+		// document.getElementById('shownameid').innerText = localStorage.getItem('name');
 
-		alert('Login success.');
+		window.open('home.html');
+
 	}else {
 		alert('Goo to  fix bug.');
 	}
