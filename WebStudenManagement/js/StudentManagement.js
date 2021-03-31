@@ -695,10 +695,11 @@ function rsThemDiem(){
 // }
 function setLocalStorage(){
 	localStorage.setItem("XuatDSSV", JSON.stringify(dsSinhVien));
-	let jsonString = JSON.parse(JSON.stringify(dsSinhVien)) ;
+	let jsonString = JSON.parse(localStorage.getItem("XuatDSSV"));
 	return jsonString;
 }
 function getLocalStorage(){
 	dsSinhVien = localStorage.getItem("XuatDSSV");
 }
+
 

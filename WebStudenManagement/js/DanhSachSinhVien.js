@@ -58,11 +58,15 @@ function check() {
 
 	// check if stored data from register-form is equal to data from login form
 	if(userName.value == storedName && userPw.value == storedPw) {
-		// document.getElementById('shownameid').innerText = localStorage.getItem('name');
-
+		localStorage.setItem("user", JSON.stringify(document.getElementById("userName").value));
 		window.open('home.html');
+		console.log(localStorage.getItem("user"))
 
+		// document.getElementById("shownameid").innerText = show ;
 	}else {
 		alert('Goo to  fix bug.');
 	}
 }
+
+
+
